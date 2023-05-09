@@ -1,0 +1,4 @@
+Cahier charge
+Charte graphique
+Maquettage (moodboard: img, style, police, logos...)
+Arborescence (site, base de donnée)
