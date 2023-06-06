@@ -3,16 +3,23 @@
   <div class="Produits">
    <div class="Cafes-espresso">
     <div class="espresso-description"><h2>Cafés pour espresso</h2></div>
-    <img src="espresso-final.png" alt="" srcset="">
+    <div class="espresso-img"><img src="espresso-final.png" alt="" srcset=""></div>
+    <div class="espresso-btn"><h2>Découvrir</h2></div>
    </div>
    <div class="Cafes-funky-fruity">
-    <img src="cafe-funkyfruity2.png" alt="" srcset="">
+   <div class="funky-fruity-description"><h2>Cafés Funky & Fruity</h2></div>
+   <div class="funky-fruity-img"><img src="cafe-funkyfruity2.png" alt="" srcset=""></div>
+    <div class="funky-fruity-btn"><h2>Explorer</h2></div>
    </div>
    <div class="Cafes-filtre">
-    <img src="cafe-filtrefinal2.png" alt="" srcset="">
+   <div class="cafes-filtre-description"><h2>Cafés pour filtre</h2></div>
+   <div class="filtre-img"><img src="cafe-filtrefinal2.png" alt="" srcset=""></div>
+    <div class="filtre-btn"><h2>Voir les cafés</h2></div>
    </div>
    <div class="Accessoires-filtre">
-    <img src="cafe-equipementfinal.png" alt="" srcset="">
+   <div class="accessoires-filtre-description"><h2>Accessoires filtre</h2></div>
+   <div class="accessoires-filtre-img"><img src="cafe-equipementfinal.png" alt="" srcset=""></div>
+    <div class="accessoires-filtre-btn"><h2>Afficher</h2></div>
    </div>
   </div>
   <div class="Abonnement-marchandise">
@@ -85,23 +92,144 @@
 
 .Produits {
     display: block flex;
-    flex-direction: row;
     justify-content: space-around;
 }
 .Cafes-espresso {
-    max-height: 400px;
-    max-width: 540px;
-    
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    max-width: fit-content;
 }
-.espresso-description {
+.Cafes-espresso .espresso-img {
+    z-index: -1;
+}
+.Cafes-espresso .espresso-description {
+    display: flex;
     position: relative;
-    top: 15%;
-    left: 25%;
+    top: 12%;
+    left: 27%;
     justify-content: center;
     align-content: center;
     color: white;
-    height: fit-content;
-    width: fit-content;
+    max-height: fit-content;
+    max-width: fit-content;
 }
+.Cafes-espresso .espresso-btn {
+    display: flex;
+    position: relative;
+    top: -11%;
+    left: 30%;
+    justify-content: center;
+    align-content: center;
+    color: white;
+    max-height: fit-content;
+    max-width: 40%;
+    background-color: 33140A;
+    border-radius: 5%;
+    opacity: 85%;
+}
+.Cafes-funky-fruity {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.Cafes-espresso .funky-fruity-img {
+    z-index: -1;
+}
+.Cafes-funky-fruity .funky-fruity-description {
+    display: flex;
+    position: relative;
+    top: 12%;
+    left: 24%;
+    justify-content: center;
+    align-content: center;
+    color: white;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.Cafes-funky-fruity .funky-fruity-btn {
+    display: flex;
+    position: relative;
+    top: -11%;
+    left: 30%;
+    justify-content: center;
+    align-content: center;
+    color: 33140A;
+    max-height: fit-content;
+    max-width: 40%;
+    background-color: white;
+    border-radius: 5%;
+    opacity: 70%;
+}
+.Cafes-filtre {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.Cafes-espresso .filtre-img {
+    z-index: -1;
+}
+.Cafes-filtre .cafes-filtre-description {
+    display: flex;
+    position: relative;
+    top: 12%;
+    left: 27%;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.Cafes-filtre .filtre-btn {
+    display: flex;
+    position: relative;
+    top: -11%;
+    left: 30%;
+    justify-content: center;
+    align-content: center;
+    color: white;
+    max-height: fit-content;
+    max-width: 40%;
+    background-color: 33140A;
+    border-radius: 5%;
+    opacity: 85%;
+}
+.Accessoires-filtre {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.Cafes-espresso .accessoires-filtre-img {
+    z-index: -1;
+}
+.Accessoires-filtre .accessoires-filtre-description {
+    display: flex;
+    position: relative;
+    top: 12%;
+    left: 27%;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.Accessoires-filtre .accessoires-filtre-btn {
+    display: flex;
+    position: relative;
+    top: -11%;
+    left: 30%;
+    justify-content: center;
+    align-content: center;
+    color: 33140A;
+    max-height: fit-content;
+    max-width: 40%;
+    background-color: white;
+    border-radius: 5%;
+    opacity: 70%;
+}
+
 </style>
 </html>

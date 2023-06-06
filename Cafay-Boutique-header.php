@@ -30,15 +30,15 @@
      <a href="javascript:void(0)"<a href="#">Les Bios</a></a>
      <a href="javascript:void(0)"<a href="#">Déca</a></a>
   </div>
-  <div class="dropdown">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn">Abonnements</button></a>
-     <div class="dropdown-content">
+  <div class="dropdown2">
+    <a class="active" href="javascrip:void(0)"><button class="dropbtn2">Abonnements</button></a>
+     <div class="dropdown-content2">
      <a href="javascript:void(0)"<a href="#">Découverte</a></a>
      <a href="javascript:void(0)"<a href="#">Gros buveur</a></a>
   </div>
-  <div class="dropdown">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn">Équipement</button></a>
-     <div class="dropdown-content">
+  <div class="dropdown3">
+    <a class="active" href="javascrip:void(0)"><button class="dropbtn3">Équipement</button></a>
+     <div class="dropdown-content3">
         <h4>Type</h4>
      <a href="javascript:void(0)"<a href="#">Machines à café</a></a>
      <a href="javascript:void(0)"<a href="#">Accessoires Espresso</a></a>
@@ -55,22 +55,22 @@
      <a href="javascript:void(0)"<a href="#">Bouilloires</a></a>
   </div>
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn">Thés</button></a>
+    <a class="active" href="javascrip:void(0)">Thés</a>
 
 
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn">Professionels</button></a>
+    <a class="active" href="javascrip:void(0)">Professionels</a>
 
 
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn">Histoire</button></a>
+    <a class="active" href="javascrip:void(0)">Histoire</a>
 
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn">Mon compte</button></a>
+    <a class="active" href="javascrip:void(0)">Mon compte</a>
 </div> 
 </div>
 </div>
-  <div class="Searchbar-Panier">
+  <div class="Searchbar-Panier"></div>
   <div class="Searchbar"></div>
   <div class="Panier"></div>
   </div>
@@ -98,10 +98,15 @@
 
 .Menus {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: end;
-    align-content: center;
+    justify-content: space-around;
+}
+
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+  width: 72px;
 }
 
 .dropbtn1 {
@@ -112,16 +117,13 @@
   border: none;
 }
 
-.dropdown1 {
-  position: relative;
-  display: inline-block;
-}
-
 .dropdown-content1 {
   display: none;
+  width: 800px;
+  height: 240px;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -135,9 +137,83 @@
 
 .dropdown-content1 a:hover {background-color: #ddd;}
 
-.dropdown1:hover .dropdown-content1 {display: block;}
+.dropdown1:hover .dropdown-content1 {display: flex;flex-wrap: wrap;flex-direction: column;}
 
 .dropdown1:hover .dropbtn1 {background-color: #3e8e41;}
+
+.dropdown2 {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+  width: 72px;
+}
+
+.dropbtn2 {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content2 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content2 a:hover {background-color: #ddd;}
+
+.dropdown2:hover .dropdown-content2 {display: flex;flex-wrap: wrap;justify-content: space-around;}
+
+.dropdown2:hover .dropbtn2 {background-color: #3e8e41;}
+
+.dropdown3 {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+  width: 72px;
+}
+
+.dropbtn3 {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown-content3 {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content3 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content3 a:hover {background-color: #ddd;}
+
+.dropdown3:hover .dropdown-content3 {display: flex;flex-wrap: wrap;justify-content: space-around;}
+
+.dropdown3:hover .dropbtn3 {background-color: #3e8e41;}
 
 
 .content {
