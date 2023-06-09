@@ -2,16 +2,16 @@
 // Vérifier si le formulaire d'inscription est soumis
 if (isset($_POST['submit'])) {
     // Récupérer les données du formulaire
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
+    $nom = $_POST['userSurname'];
+    $prenom = $_POST['userName'];
     $email = $_POST['email'];
-    $motdepasse = password_hash($_POST['motdepasse'], PASSWORD_DEFAULT);
+    $motdepasse = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
 
     // Connexion à la base de données
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "mydatabase";
+    $dbname = "cafaydb";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     }
 
     // Requête d'insertion des données dans la table "utilisateurs"
-    $sql = "INSERT INTO utilisateurs (nom, prenom, email, motdepasse) VALUES ('$nom', '$prenom', '$email', '$motdepasse')";
+    $sql = "INSERT INTO useraccounts (userSurname, userName, userEmail, userPassword) VALUES ('$userSurname', '$userName', '$userEmail', '$userPassword')";
 
     if ($conn->query($sql) === TRUE) {
         // Redirection vers la page d'accueil avec le nom de l'utilisateur
@@ -43,17 +43,17 @@ if (isset($_POST['submit'])) {
 <body>
     <h1>Inscription</h1>
     <form action="inscription.php" method="POST">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required><br>
+        <label for="userSurname">Nom :</label>
+        <input type="text" id="userSurname" name="userSurname" required><br>
 
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" required><br>
+        <label for="userName">Prénom :</label>
+        <input type="text" id="userName" name="userName" required><br>
 
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required><br>
+        <label for="userEmail">Email :</label>
+        <input type="email" id="userEmail" name="userEmail" required><br>
 
-        <label for="motdepasse">Mot de passe :</label>
-        <input type="password" id="motdepasse" name="motdepasse" required><br>
+        <label for="userPassword">Mot de passe :</label>
+        <input type="password" id="userPassword" name="userPassword" required><br>
 
         <input type="submit" name="submit" value="Inscription">
     </form>

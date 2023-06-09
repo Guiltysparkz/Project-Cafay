@@ -23,8 +23,18 @@
    </div>
   </div>
   <div class="Abonnement-marchandise">
-   <div class="Abonnement"></div>
-   <div class="Marchandise"></div>
+   <div class="Abonnement">
+   <div class="Abonnement-description">
+    <h4>LES ABONNEMENTS</h4>
+    <h2>Économisez 10% sur tous les cafés</h2>
+    <h3>En vous abonnant ou dans nos formules découvertes.</h3>
+</div>
+    <div class="Abonnement-img"><img src="abonnement.jpeg" height="100%" width="100%" alt="" srcset=""></div>
+   <div class="Abonnement-btn"><h2>En savoir+</h2></div>
+</div>
+   <div class="Marchandise"><img src="newsletter.jpeg" height="100%" width="100%" alt="" srcset="">
+   <div class="Marchandise-btn"><h2>Afficher</h2></div>
+</div>
   </div>
   <div class="Equipement">
    <div class="Equipement3"></div>
@@ -230,6 +240,54 @@
     border-radius: 5%;
     opacity: 70%;
 }
-
+.Abonnement-marchandise {
+    display: flex;
+    justify-content: space-around;
+}
+.Abonnement {
+    flex-direction: column;
+    height: 450px;
+    width: 650px;
+}
+.Abonnement-description {
+    display: flex;
+    flex-direction: column;
+    z-index: +1;
+    display: flex;
+    position: relative;
+    top: 2%;
+    left: 5%;
+    justify-content: center;
+    align-content: center;
+    color: 33140A;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.Abonnement-img {
+    display: flex;
+    position: relative;
+    top: -42%;
+    z-index: -1;
+}
+.Abonnement-btn {
+    display: flex;
+    z-index: +1;
+    position: relative;
+    bottom: 60%;
+    left: 37%;
+    justify-content: center;
+    align-content: center;
+    color: white;
+    max-height: fit-content;
+    max-width: 25%;
+    background-color: 33140A;
+    border-radius: 5%;
+    opacity: 85%;
+}
+.Marchandise {
+    display: flex;
+    height: 450px;
+    width: 650px;
+}
 </style>
 </html>

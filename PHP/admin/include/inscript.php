@@ -1,7 +1,7 @@
 <?php
 require './functions.php';
 
-if(!empty($_POST['pseudo']) && !empty($_POST['email'])){
+if(!empty($_POST['userNickname']) && !empty($_POST['userEmail'])){
 function cleandata($data){
     $data = trim($data);
     $data = stripslashes($data);
@@ -17,9 +17,9 @@ $mail = cleandata($_POST['email']);
     header("location:../insc.php");
 }
 
-if(!empty($_POST['mdp']) && !empty($_POST['mdpconf']) && preg_match('#(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.+-]).{6,18}#', $_POST['mdp']) && preg_match('#(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.+-]).{6,18}#', $_POST["mdpconf"]) && $_POST['mdp'] === $_POST['mdpconf']){
+if(!empty($_POST['userPassword']) && !empty($_POST['mdpconf']) && preg_match('#(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.+-]).{6,18}#', $_POST['mdp']) && preg_match('#(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.+-]).{6,18}#', $_POST["mdpconf"]) && $_POST['mdp'] === $_POST['mdpconf']){
 
-    $pass = $_POST["mdp"];
+    $pass = $_POST["userPassword"];
     $hashed = password_hash($pass, PASSWORD_BCRYPT);
 
 }else{
@@ -32,12 +32,12 @@ if(!empty($_POST) && !empty($hashed) && !empty($usname) && !empty($mail)){
 
 try{
 require_once './bdd.php';
-    $req = $pdo->prepare("INSERT INTO exusers(username, password, conftoken, email) VALUES (:username, :password, :conftoken, :email)");
+    $req = $pdo->prepare("INSERT INTO exusers(userNickname, password, conftoken, userEmail) VALUES (:userNickname, :password, :conftoken, :userEmail)");
     $tok = token(60);
-    $req->bindParam(':username', $usname);
-    $req->bindParam(':password', $hashed);
+    $req->bindParam(':userNickname', $usname);
+    $req->bindParam(':userPassword', $hashed);
     $req->bindParam(':conftoken', $tok);
-    $req->bindParam(':email', $mail);
+    $req->bindParam(':userEmail', $mail);
     $req->execute();
 
 
