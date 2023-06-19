@@ -1,0 +1,8 @@
+for each ID fill an array named array1 (1 for first ID)
+use if else to then select which arrays have corresponding product origin/scent etc effectively creating a filter
+
+Better solution:
+Use array_search to find if product array has [filter option] (espresso or filter per example)
+Use array_shift to capture productID of each row
+use the captured productID to check if it's within the productID I want to post
+Integrate result[productArray number] in a html format

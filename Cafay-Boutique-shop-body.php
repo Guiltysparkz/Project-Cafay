@@ -1,15 +1,47 @@
+<?php
+
+require_once('connect.php');
+
+$sql = 'SELECT * FROM `coffee-products`';
+
+//je prepare la requete 
+
+$query = $db->prepare($sql);
+
+$query->execute();
+
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+require_once('close.php');
+
+?>
+
 <html>
 
 <div class="container">
   <div class="Product-filter"></div>
   <div class="Product-categories"></div>
   <div class="Product-sliding">
-//pseudo code: 
+<!--pseudo code: 
 //Divide coffee/tea/equipment in separate pages to avoid complicated filtering through code.
-//For coffee:
-//If espresso selected append to filter array 
-//Apply filter array to products
-//GetPOST include to get said products
+//Maybe get key->values from looping in mysql or maybe find out if query->fetchALL creates a workable array
+-->
+  <?php
+  foreach($result as $product) {
+  ?>
+  <img src="<?= $product['productImage'] ?>" height="300px" width="300px">
+  <p><?= $product['productOrigin'] ?></p>
+  <h3><?= $product['productName'] ?></h2>
+  <h3><?= $product['productBasePrice'] ?> €</h3>
+  <?php
+  }
+  include("./getProductsByMYSQL.php");
+  ?>
+  <img src="<?= $product['productImage'] ?>" height="300px" width="300px">
+  <p><?= $product['productOrigin'] ?></p>
+  <h3><?= $product['productName'] ?></h2>
+  <h3><?= $product['productBasePrice'] ?> €</h3>
   </div>
 </div>
 
@@ -37,6 +69,15 @@
 .Product-sliding { grid-area: Product-sliding; }
     /*Grid layout end*/
 
+  .Product-sliding {
+    display: box flex;
+    height: 1000px;
+    width: 1000px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+  }
 
 </style>
 

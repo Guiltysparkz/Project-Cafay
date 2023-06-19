@@ -1,7 +1,7 @@
 <?php
 // Vérifier si le nom est passé en paramètre d'URL
-if (isset($_GET['nom'])) {
-    $nom = $_GET['nom'];
+if (isset($_GET['userSurname'])) {
+    $nom = $_GET['userSurname'];
 } else {
     // Redirection vers la page d'inscription si le nom n'est pas disponible
     header("Location: inscription.php");
@@ -14,7 +14,7 @@ if (isset($_GET['nom'])) {
     <title>Accueil</title>
 </head>
 <body>
-    <h1>Bienvenue, <?php echo $nom; ?> !</h1>
+    <h1>Bienvenue, <?php echo $userSurname; ?> !</h1>
     <p>Ceci est la page d'accueil.</p>
 
     

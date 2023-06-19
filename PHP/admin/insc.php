@@ -44,21 +44,21 @@ include './include/header.php';
     <legend>INSCRIPTION</legend>
     <form action="./include/inscript.php" method="POST">
 
-    <label for="pseudo">Nom d'utilisateur</label>
-    <input type="text" name="pseudo" id="pseud" required pattern="^[A-Za-z'-]+$" max="20">
+    <label for="userNickname">Nom d'utilisateur</label>
+    <input type="text" name="userNickname" id="userNickname" required pattern="^[A-Za-z'-]+$" max="20">
 <!-- max sert a indiquer le nombre maximun de cractére acceptable pour le nom utilisateur ne peut eétre dépasser -->
 
-    <label for="mdp">mot de passe</label>
-    <input type="password" name="mdp" id="motdpe" required pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.-]).{6,18}$">
+    <label for="userPassword">mot de passe</label>
+    <input type="password" name="userPassword" id="userPassword" required pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.-]).{6,18}$">
 
 
-    <label for="mdpconf">confirmer votre mot de passe</label>
-    <input type="password" name="mdpconf" id="motdpec" required pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.-]).{6,18}$">
+    <label for="userPasswordconf">confirmer votre mot de passe</label>
+    <input type="password" name="userpasswordconf" id="userPassword" required pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.-]).{6,18}$">
 
  <!-- "^[A-Za-z0-9'-@!?*$.-]  pour caractéres spéciaux-->
 
-    <label for="email">Adresse mail</label>
-    <input type="email" name="email" id="email" required pattern="^[A-Za-z0-9'.-]+@{1}[A-Za-z]+\.{1}[A-Za-z0-9'.-]{2,}$">
+    <label for="userEmail">Adresse mail</label>
+    <input type="email" name="userEmail" id="userEmail" required pattern="^[A-Za-z0-9'.-]+@{1}[A-Za-z]+\.{1}[A-Za-z0-9'.-]{2,}$">
 
     <input type="submit" value="Envoyer">
 

@@ -35,10 +35,10 @@ label + input{
 <legend>LOGIN</legend>
 <form action="./include/log.php" method="post">
     
-    <label for="pseudo">Identifiant</label>
-    <input type="text" name="pseudo" id="pseud" required pattern="^[A-Za-z'-]+$">
-    <label for="motdedep">mot de passe</label>
-    <input type="password" name="motdedep" id="motdp" required pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.-]).{6,18}$">
+    <label for="userNickname">Identifiant</label>
+    <input type="text" name="userNickname" id="userNickname" required pattern="^[A-Za-z'-]+$">
+    <label for="userPassword">mot de passe</label>
+    <input type="password" name="userPassword" id="userPassword" required pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.-]).{6,18}$">
 <input type="submit" value="Envoie">
 
 

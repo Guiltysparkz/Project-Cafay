@@ -14,7 +14,7 @@
       </div>
      </div>
     <div class="Fond-video">
-     <video height=80% width=100% muted>
+     <video height=80% width=100% muted> /* autoplay loop */
      <source src="kawa-coffee-video-1.mp4" type="video/mp4">
      </video>
      </div>
