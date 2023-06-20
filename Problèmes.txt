@@ -1,0 +1,16 @@
+1- 
+
+Dans Cafay-Boutique-Header.php,
+.Menus {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+N'aligne pas les menu/boutons de menu les uns après les autres. Ils restent en column.
+L'exemple de sticky dans le cours js de devberck n'aligner pas des sous menus en colonne mais j'ai grugé avec du //display: flex;flex-wrap: wrap;flex-direction: column;// lié au hover et une taille prédéfinie. (Il y a moyen de mieux aligner les éléments? Liens en dessous des titres texte si possible.)
+
+2-
+
+Dans Cafay-Boutique-body.php,
+j'ai grugé pour aligner deux divs dans une image (un texte et un bouton) avec position:relative et du top/left négatif parce que le z-index négatif sur l'image ne marchait pas. (Le texte décallait l'image.)
+Est-ce qu'il y a un moyen moins grossière d'aligner des divs dans des divs faisant parties d'une plus grande div qui est en block flex space around? (Ce qui je suppose force les divs de se mettre en ordre/se séparer.)
