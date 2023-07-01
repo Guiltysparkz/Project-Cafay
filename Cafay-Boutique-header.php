@@ -8,7 +8,7 @@
   <div class="Menus">
   <div id="Menus">
    <div class="dropdown1">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn1">Cafés</button></a>
+    <a class="active" href="javascript:void(0)"><button class="dropbtn1">Cafés</button></a>
      <div class="dropdown-content1">
     <h4>Scores SCA</h4>
      <a href="javascript:void(0)"<a href="#">Les classiques |80+</a></a>
@@ -29,15 +29,17 @@
      <a href="javascript:void(0)"<a href="#">Direct Trade</a></a>
      <a href="javascript:void(0)"<a href="#">Les Bios</a></a>
      <a href="javascript:void(0)"<a href="#">Déca</a></a>
-  </div>
+      </div>
+   </div>
   <div class="dropdown2">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn2">Abonnements</button></a>
+    <a class="active" href="javascript:void(0)"><button class="dropbtn2">Abonnements</button></a>
      <div class="dropdown-content2">
      <a href="javascript:void(0)"<a href="#">Découverte</a></a>
      <a href="javascript:void(0)"<a href="#">Gros buveur</a></a>
+     </div>
   </div>
   <div class="dropdown3">
-    <a class="active" href="javascrip:void(0)"><button class="dropbtn3">Équipement</button></a>
+    <a class="active" href="javascript:void(0)"><button class="dropbtn3">Équipement</button></a>
      <div class="dropdown-content3">
         <h4>Type</h4>
      <a href="javascript:void(0)"<a href="#">Machines à café</a></a>
@@ -53,20 +55,21 @@
      <a href="javascript:void(0)"<a href="#">Drippers</a></a>
      <a href="javascript:void(0)"<a href="#">Filtres</a></a>
      <a href="javascript:void(0)"<a href="#">Bouilloires</a></a>
+     </div>
   </div>
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)">Thés</a>
+    <a class="active" href="javascript:void(0)">Thés</a>
 
 
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)">Professionels</a>
+    <a class="active" href="javascript:void(0)">Professionels</a>
 
 
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)">Histoire</a>
+    <a class="active" href="javascript:void(0)">Histoire</a>
 
   <div class="dropdown">
-    <a class="active" href="javascrip:void(0)">Mon compte</a>
+    <a class="active" href="javascript:void(0)">Mon compte</a>
 </div> 
 </div>
 </div>
@@ -102,11 +105,18 @@
     justify-content: space-around;
 }
 
+.Menus #Menus {
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    height: 100px;
+}
+
 .dropdown1 {
   position: relative;
   display: inline-block;
-  height: 50px;
-  width: 72px;
+  height: fit-content;
+  width: fit-content;
 }
 
 .dropbtn1 {
@@ -126,6 +136,7 @@
   min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  text-align: center;
 }
 
 .dropdown-content1 a {
@@ -144,8 +155,8 @@
 .dropdown2 {
   position: relative;
   display: inline-block;
-  height: 50px;
-  width: 72px;
+  height: fit-content;
+  width: fit-content;
 }
 
 .dropbtn2 {
@@ -160,9 +171,10 @@
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: fit-content;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  text-align: center;
 }
 
 .dropdown-content2 a {
@@ -181,8 +193,8 @@
 .dropdown3 {
   position: relative;
   display: inline-block;
-  height: 50px;
-  width: 72px;
+  height: fit-content;
+  width: fit-content;
 }
 
 .dropbtn3 {
@@ -197,9 +209,11 @@
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  width: 500px;
+  height: 240px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  text-align: center;
 }
 
 .dropdown-content3 a {
@@ -211,7 +225,7 @@
 
 .dropdown-content3 a:hover {background-color: #ddd;}
 
-.dropdown3:hover .dropdown-content3 {display: flex;flex-wrap: wrap;justify-content: space-around;}
+.dropdown3:hover .dropdown-content3 {display: flex;flex-wrap: wrap;flex-direction: column;}
 
 .dropdown3:hover .dropbtn3 {background-color: #3e8e41;}
 
