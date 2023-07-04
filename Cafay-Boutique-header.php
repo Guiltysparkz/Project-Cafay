@@ -57,24 +57,30 @@
      <a href="javascript:void(0)"<a href="#">Bouilloires</a></a>
      </div>
   </div>
-  <div class="dropdown">
-    <a class="active" href="javascript:void(0)">Thés</a>
+  <div class="dropdown4">
+  <a class="active" href="javascript:void(0)"><button class="dropbtn4">Thés</button></a>
+  </div>
 
 
-  <div class="dropdown">
-    <a class="active" href="javascript:void(0)">Professionels</a>
+  <div class="dropdown5">
+  <a class="active" href="javascript:void(0)"><button class="dropbtn5">Professionels</button></a>
+  </div>
 
 
-  <div class="dropdown">
-    <a class="active" href="javascript:void(0)">Histoire</a>
+  <div class="dropdown6">
+  <a class="active" href="javascript:void(0)"><button class="dropbtn6">Histoire</button></a>
+  </div>
 
-  <div class="dropdown">
-    <a class="active" href="javascript:void(0)">Mon compte</a>
+  <div class="dropdown7">
+  <a class="active" href="javascript:void(0)"><button class="dropbtn7">Mon compte</button></a>
 </div> 
 </div>
 </div>
-  <div class="Searchbar-Panier"></div>
-  <div class="Searchbar"></div>
+  <div class="Searchbar-Panier">
+   <div class="Searchbar">
+    <input type="text" placeholder="Search..">
+   </div>
+  </div>
   <div class="Panier"></div>
   </div>
 </div>
@@ -120,8 +126,7 @@
 }
 
 .dropbtn1 {
-  background-color: #04AA6D;
-  color: white;
+  color: black;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -150,8 +155,6 @@
 
 .dropdown1:hover .dropdown-content1 {display: flex;flex-wrap: wrap;flex-direction: column;}
 
-.dropdown1:hover .dropbtn1 {background-color: #3e8e41;}
-
 .dropdown2 {
   position: relative;
   display: inline-block;
@@ -160,8 +163,7 @@
 }
 
 .dropbtn2 {
-  background-color: #04AA6D;
-  color: white;
+  color: black;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -188,8 +190,6 @@
 
 .dropdown2:hover .dropdown-content2 {display: flex;flex-wrap: wrap;justify-content: space-around;}
 
-.dropdown2:hover .dropbtn2 {background-color: #3e8e41;}
-
 .dropdown3 {
   position: relative;
   display: inline-block;
@@ -198,8 +198,7 @@
 }
 
 .dropbtn3 {
-  background-color: #04AA6D;
-  color: white;
+  color: black;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -227,8 +226,6 @@
 
 .dropdown3:hover .dropdown-content3 {display: flex;flex-wrap: wrap;flex-direction: column;}
 
-.dropdown3:hover .dropbtn3 {background-color: #3e8e41;}
-
 
 .content {
   padding: 16px;
@@ -242,6 +239,140 @@
 
 .sticky + .content {
   padding-top: 60px;
+}
+
+.dropdown3 {
+  position: relative;
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+}
+
+.dropbtn3 {
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+.dropdown-content3 a:hover {background-color: #ddd;}
+
+.dropdown3:hover .dropdown-content3 {display: flex;flex-wrap: wrap;flex-direction: column;}
+
+.dropdown4 {
+  position: relative;
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+}
+
+.dropbtn4 {
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+.dropdown-content4 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content4 a:hover {background-color: #ddd;}
+
+.dropdown5 {
+  position: relative;
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+}
+
+.dropbtn5 {
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+.dropdown-content5 a:hover {background-color: #ddd;}
+
+.dropdown6 {
+  position: relative;
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+}
+
+.dropbtn6 {
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+.dropdown-content6 a:hover {background-color: #ddd;}
+
+.dropdown7 {
+  position: relative;
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+}
+
+.dropbtn7 {
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+.dropdown-content7 a:hover {background-color: #ddd;}
+
+/* Search bar */
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.searchbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.searchbar a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.searchbar input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  
+  .searchbar input[type=text] {
+    border: 1px solid #ccc;  
+  }
 }
 
 </style>
