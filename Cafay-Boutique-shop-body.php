@@ -36,7 +36,6 @@ require_once('close.php');
   <h3><?= $product['productBasePrice'] ?> €</h3>
   <?php
   }
-  include("./getProductsByMYSQL.php");
   ?>
   <img src="<?= $product['productImage'] ?>" height="300px" width="300px">
   <p><?= $product['productOrigin'] ?></p>
