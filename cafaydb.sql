@@ -14,13 +14,71 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Data exporting was unselected.
 
--- Data exporting was unselected.
+-- Dumping database structure for cafaydb
+CREATE DATABASE IF NOT EXISTS `cafaydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `cafaydb`;
 
--- Data exporting was unselected.
+-- Dumping structure for table cafaydb.coffee-products
+CREATE TABLE IF NOT EXISTS `coffee-products` (
+  `productID` int NOT NULL AUTO_INCREMENT,
+  `productImage` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productOrigin` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productCategoryScore` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productTorrefactionMethod` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productWashingMethod` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productProductionType` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productScentProfile` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productBasePrice` float NOT NULL,
+  PRIMARY KEY (`productID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Product name, category, torrefaction method, washing method, production type (déco, bio, coop...), scent profile.';
 
--- Data exporting was unselected.
+-- Dumping data for table cafaydb.coffee-products: ~4 rows (approximately)
+INSERT INTO `coffee-products` (`productID`, `productImage`, `productName`, `productOrigin`, `productCategoryScore`, `productTorrefactionMethod`, `productWashingMethod`, `productProductionType`, `productScentProfile`, `productBasePrice`) VALUES
+	(1, 'BlendEspresso_IMG-300x300.jpg', 'Felipe Restrepo', 'Colombie', '88+', 'Filtre ou Espresso', 'Anaérobie Naturelle', 'Producteur', 'Fruité & Floral', 15.9),
+	(2, 'Boa_IMG-300x300.jpg', 'Jhoan Vergara', 'Colombie', '88+', 'Filtre', 'Double fermentation, Lavée', 'Producteur', 'Fruité & Floral', 14.9),
+	(3, 'Busindelavé_800-300x300.jpg', 'La Primavera', 'Colombie', '87+', 'Espresso', 'Lavée', 'Producteur', 'Fruité & Floral', 13.9),
+	(4, '800x800_blend189-300x300.jpg', 'La Roca', 'Colombie', '87+', 'Filtre', 'Naturelle', 'Producteur', 'Fruité & Floral', 14.9);
+
+-- Dumping structure for table cafaydb.equipment-products
+CREATE TABLE IF NOT EXISTS `equipment-products` (
+  `productID` int NOT NULL AUTO_INCREMENT,
+  `productName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productCategory` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productBrand` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productBasePrice` float NOT NULL,
+  PRIMARY KEY (`productID`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Espresso accessories, filter accessories, coffee machines.';
+
+-- Dumping data for table cafaydb.equipment-products: ~0 rows (approximately)
+
+-- Dumping structure for table cafaydb.tea-products
+CREATE TABLE IF NOT EXISTS `tea-products` (
+  `productID` int NOT NULL AUTO_INCREMENT,
+  `productName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productProducer` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productBasePrice` float NOT NULL,
+  PRIMARY KEY (`productID`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table cafaydb.tea-products: ~0 rows (approximately)
+
+-- Dumping structure for table cafaydb.useraccounts
+CREATE TABLE IF NOT EXISTS `useraccounts` (
+  `userID` int NOT NULL AUTO_INCREMENT,
+  `userNickname` varchar(50) NOT NULL,
+  `userSurname` varchar(50) NOT NULL,
+  `userName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `userEmail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `userPassword` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `userCart` varchar(2000) DEFAULT NULL,
+  `userSub` varchar(50) DEFAULT NULL,
+  `userHistory` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users nicknames, email address, password, cart, subscription, purchase history.';
+
+-- Dumping data for table cafaydb.useraccounts: ~0 rows (approximately)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
