@@ -1,19 +1,6 @@
 <?php
 
-require_once('connect.php');
 
-$sql = 'SELECT * FROM `coffee-products`';
-
-//je prepare la requete 
-
-$query = $db->prepare($sql);
-
-$query->execute();
-
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
-require_once('close.php');
 
 ?>
 
@@ -23,28 +10,41 @@ require_once('close.php');
   <div class="Product-filter"></div>
   <div class="Product-categories"></div>
   <div class="Product-sliding">
-<!--pseudo code: 
-//Divide coffee/tea/equipment in separate pages to avoid complicated filtering through code.
-//Maybe get key->values from looping in mysql or maybe find out if query->fetchALL creates a workable array
--->
-  <?php
-  foreach($result as $product) {
+
+
+
+  <?php 
+
+  require_once('connect.php');
+
+  for ($ids = 1; $ids < 5; $ids++){
+  $sql = "SELECT * FROM coffee WHERE productID=$ids";
+  $query = $db->prepare($sql);
+  $query->execute();
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as $product) {
+      ?>
+    <div class="card" id="card<?= $product['productID'] ?>">
+    <img id="image<?= $product['productImage'] ?>" src="<?= $product['productImage'] ?>" height="300px" width="300px">
+    <div class="containerCard">
+    <p id="origin<?= $product['productOrigin'] ?>"><?= $product['productOrigin'] ?></p>
+    <h3 id="nomProduit<?= $product['productName'] ?>"><?= $product['productName'] ?></h2>
+    <h3 id="prixBase<?= $product['productBasePrice'] ?>">A partir de <?= $product['productBasePrice'] ?> €</h3>
+    </div>
+    </div>
+    <?php
+    }
+ }
   ?>
-  <img src="<?= $product['productImage'] ?>" height="300px" width="300px">
-  <p><?= $product['productOrigin'] ?></p>
-  <h3><?= $product['productName'] ?></h2>
-  <h3><?= $product['productBasePrice'] ?> €</h3>
-  <?php
-  }
-  ?>
-  <img src="<?= $product['productImage'] ?>" height="300px" width="300px">
-  <p><?= $product['productOrigin'] ?></p>
-  <h3><?= $product['productName'] ?></h2>
-  <h3><?= $product['productBasePrice'] ?> €</h3>
+
+
   </div>
 </div>
 
 <style>
+
+
+
     /*Grid layout start*/
     .container {  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -69,14 +69,40 @@ require_once('close.php');
     /*Grid layout end*/
 
   .Product-sliding {
-    display: box flex;
-    height: 1000px;
-    width: 1000px;
-    flex-wrap: nowrap;
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-    
-  }
+    align-items: flex-start;
+    }
+
+    .card {
+  /* Add shadows to create the "card" effect */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.containerCard {
+  padding: 2px 8px;
+  height: fit-content;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: left;
+}
 
 </style>
 
