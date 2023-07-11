@@ -7,8 +7,41 @@
 <html>
 
 <div class="container">
-  <div class="Product-filter"></div>
-  <div class="Product-categories"></div>
+  <div class="Product-filter">
+
+    <!-- Control buttons -->
+    <div id="coffeeFilter">
+      <button class="btn active" onclick="filterSelection('classic80+')"> Les classiques | 80+</button>
+      <button class="btn" onclick="filterSelection('seasonal84+')"> Les cafés de saison | 84+</button>
+      <button class="btn" onclick="filterSelection('limitedEdition87+')"> Les éditions limitées | 87+</button>
+      <button class="btn" onclick="filterSelection('competition90+')"> Les lots de compétition | 90+</button>
+    </div>
+
+  </div>
+  <div class="Product-categories">
+
+    <!-- Control buttons -->
+    <div id="coffeeFilter">
+      <h2>Torréfaction</h2>
+      <button class="btn active" onclick="filterSelection('Espresso')"> Espresso</button>
+      <button class="btn" onclick="filterSelection('Filtre')"> Filtre</button>
+      <button class="btn" onclick="filterSelection('Machine auto')"> Machine auto</button>
+      <h2>Méthode</h2>
+      <button class="btn" onclick="filterSelection('Lavée')"> Lavée</button>
+      <button class="btn" onclick="filterSelection('Naturelle & Honey')"> Naturelle & honey</button>
+      <button class="btn active" onclick="filterSelection('Anaérobie Naturelle')"> Anaérobie Naturelle</button>
+      <h2>Notre sélection</h2>
+      <button class="btn" onclick="filterSelection('Cooperative')"> Cooperative</button>
+      <button class="btn" onclick="filterSelection('Bio')"> Bio</button>
+      <button class="btn" onclick="filterSelection('Déca')"> Déca</button>
+      <button class="btn" onclick="filterSelection('Édition limitée')"> Édition limitée</button>
+      <button class="btn active" onclick="filterSelection('producteur')"> Producteur</button>
+      <h2>Profil aromatique</h2>
+      <button class="btn" onclick="filterSelection('Chocolaté et corsé')"> Chocolaté et corsé</button>
+      <button class="btn" onclick="filterSelection('Fruité & Floral')"> Fruité & Floral</button>
+    </div>
+
+  </div>
   <div class="Product-sliding">
 
 
