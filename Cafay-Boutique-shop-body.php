@@ -17,7 +17,13 @@
 
   require_once('connect.php');
 
-  for ($ids = 1; $ids < 5; $ids++){
+  $sql = "SELECT productID FROM coffee";
+  $query = $db->prepare($sql);
+  $query->execute();
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+  $idCount = count($result);
+
+  for ($ids = 1; $ids <= $idCount; $ids++){
   $sql = "SELECT * FROM coffee WHERE productID=$ids";
   $query = $db->prepare($sql);
   $query->execute();
@@ -34,7 +40,7 @@
     </div>
     <?php
     }
- }
+  }
   ?>
 
 
