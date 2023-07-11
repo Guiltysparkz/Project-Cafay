@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server version:               8.0.30 - MySQL Community Server - GPL
--- Server OS:                    Win64
+-- Hôte:                         127.0.0.1
+-- Version du serveur:           8.0.30 - MySQL Community Server - GPL
+-- SE du serveur:                Win64
 -- HeidiSQL Version:             12.1.0.6537
 -- --------------------------------------------------------
 
@@ -15,12 +15,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for cafaydb
+-- Listage de la structure de la base pour cafaydb
 CREATE DATABASE IF NOT EXISTS `cafaydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `cafaydb`;
 
--- Dumping structure for table cafaydb.coffee-products
-CREATE TABLE IF NOT EXISTS `coffee-products` (
+-- Listage de la structure de table cafaydb. coffee
+CREATE TABLE IF NOT EXISTS `coffee` (
   `productID` int NOT NULL AUTO_INCREMENT,
   `productImage` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `productName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `coffee-products` (
   PRIMARY KEY (`productID`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Product name, category, torrefaction method, washing method, production type (déco, bio, coop...), scent profile.';
 
--- Dumping data for table cafaydb.coffee-products: ~4 rows (approximately)
-INSERT INTO `coffee-products` (`productID`, `productImage`, `productName`, `productOrigin`, `productCategoryScore`, `productTorrefactionMethod`, `productWashingMethod`, `productProductionType`, `productScentProfile`, `productBasePrice`) VALUES
+-- Listage des données de la table cafaydb.coffee : ~4 rows (environ)
+INSERT INTO `coffee` (`productID`, `productImage`, `productName`, `productOrigin`, `productCategoryScore`, `productTorrefactionMethod`, `productWashingMethod`, `productProductionType`, `productScentProfile`, `productBasePrice`) VALUES
 	(1, 'BlendEspresso_IMG-300x300.jpg', 'Felipe Restrepo', 'Colombie', '88+', 'Filtre ou Espresso', 'Anaérobie Naturelle', 'Producteur', 'Fruité & Floral', 15.9),
 	(2, 'Boa_IMG-300x300.jpg', 'Jhoan Vergara', 'Colombie', '88+', 'Filtre', 'Double fermentation, Lavée', 'Producteur', 'Fruité & Floral', 14.9),
 	(3, 'Busindelavé_800-300x300.jpg', 'La Primavera', 'Colombie', '87+', 'Espresso', 'Lavée', 'Producteur', 'Fruité & Floral', 13.9),
 	(4, '800x800_blend189-300x300.jpg', 'La Roca', 'Colombie', '87+', 'Filtre', 'Naturelle', 'Producteur', 'Fruité & Floral', 14.9);
 
--- Dumping structure for table cafaydb.equipment-products
+-- Listage de la structure de table cafaydb. equipment-products
 CREATE TABLE IF NOT EXISTS `equipment-products` (
   `productID` int NOT NULL AUTO_INCREMENT,
   `productName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS `equipment-products` (
   PRIMARY KEY (`productID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Espresso accessories, filter accessories, coffee machines.';
 
--- Dumping data for table cafaydb.equipment-products: ~0 rows (approximately)
+-- Listage des données de la table cafaydb.equipment-products : ~0 rows (environ)
 
--- Dumping structure for table cafaydb.tea-products
+-- Listage de la structure de table cafaydb. tea-products
 CREATE TABLE IF NOT EXISTS `tea-products` (
   `productID` int NOT NULL AUTO_INCREMENT,
   `productName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -62,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `tea-products` (
   PRIMARY KEY (`productID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table cafaydb.tea-products: ~0 rows (approximately)
+-- Listage des données de la table cafaydb.tea-products : ~0 rows (environ)
 
--- Dumping structure for table cafaydb.useraccounts
+-- Listage de la structure de table cafaydb. useraccounts
 CREATE TABLE IF NOT EXISTS `useraccounts` (
   `userID` int NOT NULL AUTO_INCREMENT,
   `userNickname` varchar(50) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `useraccounts` (
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users nicknames, email address, password, cart, subscription, purchase history.';
 
--- Dumping data for table cafaydb.useraccounts: ~0 rows (approximately)
+-- Listage des données de la table cafaydb.useraccounts : ~0 rows (environ)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
