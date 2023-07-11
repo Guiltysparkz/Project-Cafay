@@ -154,7 +154,6 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-    align-cards: flex-start;
     }
 
     .card {
@@ -162,7 +161,6 @@
   
   display: flex;
   flex-direction: column;
-  align-cards: center;
   padding-top: 8px;
 }
 
@@ -180,7 +178,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-cards: left;
 }
 
 </style>
