@@ -1,10 +1,8 @@
-<?php
-
-
-
-?>
-
+<!DOCTYPE html>
 <html>
+  <head>
+    <title>Cafay-Boutique-shop-body</title>
+  </head>
 
 <div class="container">
   <div class="Product-filter">
@@ -165,9 +163,9 @@
 </style>
 
 <script>
-
-// Récupérer les éléments du DOM
-// j'effectue tous mes récupération
+  // Récupérer les éléments du DOM (pour afficher les filtres au chargement de la page)
+document.addEventListener('DOMContentLoaded', function () {
+// j'effectue tous mes récupérations
   const filtre_Espresso = document.getElementById('Espresso');
   const filtre_Filtre = document.getElementById('Filtre');
   const filtre_MachineAuto = document.getElementById('MachineAuto');
@@ -198,7 +196,7 @@
   filtre_ChocolatEtCorse.addEventListener('click', toggleFilter);
   filtre_FruiteEtFloral.addEventListener('click', toggleFilter);
 
-//toggle filter function
+//activer les filtres basé sur l'evenement qui est actif
   function toggleFilter(event) {
     event.target.classList.toggle('active');
     filterCards();
@@ -220,6 +218,29 @@ function filterCards() {
   const selectedChocolatEtCorse = filtre_ChocolatEtCorse.classList.contains('active');
   const selectedFruiteEtFloral = filtre_FruiteEtFloral.classList.contains('active');
 
+  // Verifier s'il y a des filtres actifs
+  const anyFiltersSelected =
+                    selectedEspresso ||
+                    selectedFiltre ||
+                    selectedMachineAuto ||
+                    selectedLavee ||
+                    selectedNaturelleEtHoney ||
+                    selectedAnaerobie ||
+                    selectedCooperative ||
+                    selectedBio ||
+                    selectedDeca ||
+                    selectedEditionLimitee ||
+                    selectedProducteur ||
+                    selectedChocolatEtCorse ||
+                    selectedFruiteEtFloral
+
+  // Afficher tous les éléments si aucun filtre n'est sélectionné
+  if (!anyFiltersSelected) {
+                    cards.forEach((card) => {
+                        card.style.display = 'block';
+                    });
+                    return;
+                }
 
   // Parcourir les éléments et les afficher ou les masquer en fonction des filtres
   cards.forEach((card) => {
@@ -246,9 +267,9 @@ function filterCards() {
     }
   });
 }
-
 // Afficher tous les éléments au chargement de la page
 filterCards();
+});
 
 </script>
 
