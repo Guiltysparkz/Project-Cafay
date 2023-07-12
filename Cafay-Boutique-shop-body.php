@@ -7,18 +7,19 @@
 <div class="container">
   <div class="Product-filter">
 
-    <!-- Control buttons -->
-    <div id="coffeeFilter">
-      <button class="btn" id="classic80+"> Les classiques | 80+</button>
-      <button class="btn" id="seasonal84+"> Les cafés de saison | 84+</button>
-      <button class="btn" id="limitedEdition87+"> Les éditions limitées | 87+</button>
-      <button class="btn" id="competition90+"> Les lots de compétition | 90+</button>
-    </div>
+  
+    
 
   </div>
   <div class="Product-categories">
-
-    <!-- Control buttons -->
+    <div id="lesCafesParScore">
+      <h2>Les cafés</h2>
+      <button class="btn" id="80"> Les classiques | 80+</button>
+      <button class="btn" id="84"> Les cafés de saison | 84+</button>
+      <button class="btn" id="87"> Les éditions limitées | 87+</button>
+      <button class="btn" id="90"> Les lots de compétition | 90+</button>
+    </div>
+    
     <div id="filtre_cafe">
       <h2>Torréfaction</h2>
       <button class="btn" id="Espresso"> Espresso</button>
@@ -63,7 +64,10 @@
       ?>
     <div class="card" id="card" 
     data-productFilter="<?=$product['productFilter']?>">
-    <img id="image<?= $product['productImage'] ?>" src="<?= $product['productImage'] ?>" height="300px" width="300px">
+    <div class="image-container">
+    <img id="<?= $product['productImage'] ?>" src="<?= $product['productImage'] ?>" height="300px" width="300px">
+    <img id="<?= $product['productAltImage'] ?> hide" src="<?= $product['productAltImage'] ?>" height="300px" width="300px">
+    </div>
     <div class="containerCard">
     <p id="origin<?= $product['productOrigin'] ?>"><?= $product['productOrigin'] ?></p>
     <h3 id="nomProduit<?= $product['productName'] ?>"><?= $product['productName'] ?></h2>
@@ -80,6 +84,57 @@
 </div>
 
 <style>
+
+      /*Grid layout start*/
+      .container {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". Product-filter Product-filter Product-filter Product-filter ."
+    ". Product-categories Product-sliding Product-sliding Product-sliding ."
+    ". Product-categories Product-sliding Product-sliding Product-sliding ."
+    ". Product-categories Product-sliding Product-sliding Product-sliding ."
+    ". Product-categories Product-sliding Product-sliding Product-sliding ."
+    ". . Product-sliding Product-sliding Product-sliding ."
+    ". . Product-sliding Product-sliding Product-sliding .";
+}
+
+.Product-filter { grid-area: Product-filter; }
+
+.Product-categories { grid-area: Product-categories; }
+
+.Product-sliding { grid-area: Product-sliding; }
+    /*Grid layout end*/
+
+    /*Image transition*/
+    .image-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease;
+}
+
+.hide {
+  opacity: 0;
+}
+
+/*Image transition */
+
+
+#lesCafesParScore {
+  display: block;
+}
 
 #coffeeFilter {
   margin-top: 20px;
@@ -104,28 +159,6 @@
   color: white;
 }
 
-    /*Grid layout start*/
-    .container {  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    ". Product-filter Product-filter Product-filter Product-filter ."
-    ". Product-categories Product-sliding Product-sliding Product-sliding ."
-    ". Product-categories Product-sliding Product-sliding Product-sliding ."
-    ". Product-categories Product-sliding Product-sliding Product-sliding ."
-    ". Product-categories Product-sliding Product-sliding Product-sliding ."
-    ". . Product-sliding Product-sliding Product-sliding ."
-    ". . Product-sliding Product-sliding Product-sliding .";
-}
-
-.Product-filter { grid-area: Product-filter; }
-
-.Product-categories { grid-area: Product-categories; }
-
-.Product-sliding { grid-area: Product-sliding; }
-    /*Grid layout end*/
 
   .Product-sliding {
     display: flex;
@@ -163,6 +196,34 @@
 </style>
 
 <script>
+//Transition d'images (forcer la charge de la première image pour être sur qu'elle serat là en premier avant la transi)
+document.addEventListener('DOMContentLoaded', function() {
+  var imageContainers = document.querySelectorAll('.image-container');
+
+  imageContainers.forEach(function(container) {
+    var images = container.querySelectorAll('img');
+    var image1 = images[0];
+    var image2 = images[1];
+
+    // Add load event listener to the images
+    image1.addEventListener('load', function() {
+      // Initially hide the second image
+      image2.style.display = 'none';
+    });
+
+    container.addEventListener('mouseenter', function() {
+      image1.style.display = 'none';
+      image2.style.display = 'block';
+    });
+
+    container.addEventListener('mouseleave', function() {
+      image1.style.display = 'block';
+      image2.style.display = 'none';
+    });
+  });
+
+
+//Filtres de cafés
   // Récupérer les éléments du DOM (pour afficher les filtres au chargement de la page)
 document.addEventListener('DOMContentLoaded', function () {
 // j'effectue tous mes récupérations
@@ -270,7 +331,7 @@ function filterCards() {
 // Afficher tous les éléments au chargement de la page
 filterCards();
 });
-
+});
 </script>
 
 </html>
