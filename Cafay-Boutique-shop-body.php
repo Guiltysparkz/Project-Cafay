@@ -168,41 +168,41 @@
 
 // Récupérer les éléments du DOM
 // j'effectue tous mes récupération
-const filtre_Espresso = document.getElementById('Espresso');
-const filtre_Filtre = document.getElementById('Filtre');
-const filtre_MachineAuto = document.getElementById('MachineAuto');
-const filtre_Lavee = document.getElementById('Lavee');
-const filtre_NaturelleEtHoney = document.getElementById('NaturelleEtHoney');
-const filtre_Anaerobie = document.getElementById('Anaerobie');
-const filtre_Cooperative = document.getElementById('Cooperative');
-const filtre_Bio = document.getElementById('Bio');
-const filtre_Deca = document.getElementById('Deca');
-const filtre_EditionLimitee = document.getElementById('EditionLimitee');
-const filtre_Producteur = document.getElementById('Producteur');
-const filtre_ChocolatEtCorse = document.getElementById('ChocolatEtCorse');
-const filtre_FruiteEtFloral = document.getElementById('FruiteEtFloral');
-const cards = document.querySelectorAll('.card');
+  const filtre_Espresso = document.getElementById('Espresso');
+  const filtre_Filtre = document.getElementById('Filtre');
+  const filtre_MachineAuto = document.getElementById('MachineAuto');
+  const filtre_Lavee = document.getElementById('Lavee');
+  const filtre_NaturelleEtHoney = document.getElementById('NaturelleEtHoney');
+  const filtre_Anaerobie = document.getElementById('Anaerobie');
+  const filtre_Cooperative = document.getElementById('Cooperative');
+  const filtre_Bio = document.getElementById('Bio');
+  const filtre_Deca = document.getElementById('Deca');
+  const filtre_EditionLimitee = document.getElementById('EditionLimitee');
+  const filtre_Producteur = document.getElementById('Producteur');
+  const filtre_ChocolatEtCorse = document.getElementById('ChocolatEtCorse');
+  const filtre_FruiteEtFloral = document.getElementById('FruiteEtFloral');
+  const cards = document.querySelectorAll('.card');
 
 // Ajouter des  d'événements pour les filtres
-filtre_Espresso.addEventListener('click', toggleFilter);
-filtre_Filtre.addEventListener('click', toggleFilter);
-filtre_MachineAuto.addEventListener('click', toggleFilter);
-filtre_Lavee.addEventListener('click', toggleFilter);
-filtre_NaturelleEtHoney.addEventListener('click', toggleFilter);
-filtre_Anaerobie.addEventListener('click', toggleFilter);
-filtre_Cooperative.addEventListener('click', toggleFilter);
-filtre_Bio.addEventListener('click', toggleFilter);
-filtre_Deca.addEventListener('click', toggleFilter);
-filtre_EditionLimitee.addEventListener('click', toggleFilter);
-filtre_Producteur.addEventListener('click', toggleFilter);
-filtre_ChocolatEtCorse.addEventListener('click', toggleFilter);
-filtre_FruiteEtFloral.addEventListener('click', toggleFilter);
+  filtre_Espresso.addEventListener('click', toggleFilter);
+  filtre_Filtre.addEventListener('click', toggleFilter);
+  filtre_MachineAuto.addEventListener('click', toggleFilter);
+  filtre_Lavee.addEventListener('click', toggleFilter);
+  filtre_NaturelleEtHoney.addEventListener('click', toggleFilter);
+  filtre_Anaerobie.addEventListener('click', toggleFilter);
+  filtre_Cooperative.addEventListener('click', toggleFilter);
+  filtre_Bio.addEventListener('click', toggleFilter);
+  filtre_Deca.addEventListener('click', toggleFilter);
+  filtre_EditionLimitee.addEventListener('click', toggleFilter);
+  filtre_Producteur.addEventListener('click', toggleFilter);
+  filtre_ChocolatEtCorse.addEventListener('click', toggleFilter);
+  filtre_FruiteEtFloral.addEventListener('click', toggleFilter);
 
 //toggle filter function
-function toggleFilter(event) {
-  event.target.classList.toggle('active');
-  filterCards();
-}
+  function toggleFilter(event) {
+    event.target.classList.toggle('active');
+    filterCards();
+  }
 
 // Fonction de filtrage des éléments
 function filterCards() {
