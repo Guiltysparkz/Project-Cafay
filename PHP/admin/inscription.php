@@ -1,11 +1,14 @@
 <?php
+// Start or resume the session
+session_start();
+
 // Vérifier si le formulaire d'inscription est soumis
 if (isset($_POST['submit'])) {
     // Récupérer les données du formulaire
-    $nom = $_POST['userSurname'];
-    $prenom = $_POST['userName'];
-    $email = $_POST['email'];
-    $motdepasse = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
+    $userSurname = $_POST['userSurname'];
+    $userName = $_POST['userName'];
+    $userEmail = $_POST['userEmail'];
+    $userPassword = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
 
     // Connexion à la base de données
     $servername = "localhost";
@@ -13,26 +16,40 @@ if (isset($_POST['submit'])) {
     $password = "";
     $dbname = "cafaydb";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Vérifier la connexion
-    if ($conn->connect_error) {
-        die("La connexion à la base de données a échoué : " . $conn->connect_error);
-    }
+        // Requête d'insertion des données dans la table "useraccounts"
+        $sql = "INSERT INTO useraccounts (userSurname, userName, userEmail, userPassword) VALUES (:userSurname, :userName, :userEmail, :userPassword)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':userSurname', $userSurname);
+        $stmt->bindParam(':userName', $userName);
+        $stmt->bindParam(':userEmail', $userEmail);
+        $stmt->bindParam(':userPassword', $userPassword);
 
-    // Requête d'insertion des données dans la table "utilisateurs"
-    $sql = "INSERT INTO useraccounts (userSurname, userName, userEmail, userPassword) VALUES ('$userSurname', '$userName', '$userEmail', '$userPassword')";
+        $stmt->execute();
 
-    if ($conn->query($sql) === TRUE) {
+        // Store success message in session variable
+        $_SESSION['flash']['success'] = "Inscription réussie !";
+
+        // Clean the output buffer
+        ob_clean();
+
         // Redirection vers la page d'accueil avec le nom de l'utilisateur
-        header("Location: page_acc.php?nom=$nom");
+        header("Location: page_acc.php?userName=$userName");
         exit();
-    } else {
-        echo "Erreur lors de l'inscription : " . $conn->error;
-    }
+    } catch (PDOException $e) {
+        // Store error message in session variable
+        $_SESSION['flash']['error'] = "Erreur lors de l'inscription : " . $e->getMessage();
 
-    // Fermeture de la connexion à la base de données
-    $conn->close();
+        // Clean the output buffer
+        ob_clean();
+
+        // Redirection vers la page d'accueil
+        header("Location: inscription.php");
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -42,6 +59,13 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <h1>Inscription</h1>
+    <?php
+    // Display error message if it exists in session
+    if (isset($_SESSION['flash']['error'])) {
+        echo "<p>{$_SESSION['flash']['error']}</p>";
+        unset($_SESSION['flash']['error']);
+    }
+    ?>
     <form action="inscription.php" method="POST">
         <label for="userSurname">Nom :</label>
         <input type="text" id="userSurname" name="userSurname" required><br>

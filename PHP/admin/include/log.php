@@ -13,13 +13,23 @@ $userNickname = cleandata($_POST['userNickname']);
     echo 'probleme';
 }
 
+$userdata = null; // Define $userdata variable outside the try block
+    //preg_match logic is such:
+    /*^ asserts the start of the string.
+    (?=.*[A-Z]) requires at least one uppercase letter.
+    (?=.*[a-z]) requires at least one lowercase letter.
+    (?=.*\d) requires at least one digit.
+    (?=.*[@!?*$.+-]) requires at least one special character from the specified set (@!?*$.+-).
+    [A-Za-z\d@!?*$.+-]{6,20} matches between 6 and 20 characters from the specified character set.
+    $ asserts the end of the string.*/
 
-
-if(!empty($_POST['userPassword']) && preg_match('#(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@!?*$.+-]).{6,18}#', $_POST['userPassword']) &&!empty($userNickname)){
+if(!empty($_POST['userPassword']) 
+    && preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@!?*$.+-])[A-Za-z\d@!?*$.+-]{6,20}$/', $_POST['userPassword']) 
+    &&!empty($userNickname)){
     try{
         require_once './bdd.php';
-        $req = $pdo->prepare('SELECT * FROM useraccounts WHERE tokenconfirmed IS NOT NULL AND userNickname = :pseudale ');
-        $req->bindParam(':pseudale', $userNickname);
+        $req = $pdo->prepare('SELECT * FROM useraccounts WHERE tokenconfirmed IS NOT NULL AND userNickname = :userNickname ');
+        $req->bindParam(':userNickname', $userNickname);
         $req->execute();
         $userdata = $req->fetch(PDO::FETCH_OBJ);
     }catch(PDOException $e){
@@ -32,6 +42,9 @@ if(!empty($_POST['userPassword']) && preg_match('#(?=.*?[A-Z])(?=.*?[a-z])(?=.*?
            header('location:../index.php');
         }else{
             echo 'c\'est pas bon du';
+            var_dump(password_verify($_POST['userPassword'], $userdata->userPassword));
+            echo "userdata:  ";
+            var_dump($userdata);
         }
     }
 }else{
