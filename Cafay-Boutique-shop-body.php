@@ -4,7 +4,7 @@
     <title>Cafay-Boutique-shop-body</title>
   </head>
 
-<div class="container">
+<div class="container-body">
   <div class="Product-filter">
 
   
@@ -63,10 +63,10 @@
     foreach ($result as $product) {
       ?>
     <div class="card" id="card" 
-    data-productFilter="<?=$product['productFilter']?>">
+    data-productFilter="<?=$product['productFilter']?>"
+    data-productID="<?=$product['productID']?>">
     <div class="image-container">
-    <img id="<?= $product['productImage'] ?>" src="<?= $product['productImage'] ?>" height="300px" width="300px">
-    <img id="<?= $product['productAltImage'] ?> hide" src="<?= $product['productAltImage'] ?>" height="300px" width="300px">
+    <img id="<?= $product['productImage'] ?>" src="<?= $product['productImage'] ?>" height="300px" width="300px"><img id="<?= $product['productAltImage'] ?> hide" src="<?= $product['productAltImage'] ?>" height="300px" width="300px">
     </div>
     <div class="containerCard">
     <p id="origin<?= $product['productOrigin'] ?>"><?= $product['productOrigin'] ?></p>
@@ -86,7 +86,7 @@
 <style>
 
       /*Grid layout start*/
-      .container {  display: grid;
+      .container-body {  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 0px 0px;
@@ -133,7 +133,7 @@
 
 
 #lesCafesParScore {
-  display: block;
+  display: inline-block;
 }
 
 #coffeeFilter {
@@ -166,7 +166,7 @@
     width: fit-content;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-around;
     }
 
     .card {
@@ -196,7 +196,7 @@
 </style>
 
 <script>
-//Transition d'images (forcer la charge de la première image pour être sur qu'elle serat là en premier avant la transi)
+//Transition d'images (forcer la charge de la première image pour être sûr qu'elle sera là en premier avant la transition)
 document.addEventListener('DOMContentLoaded', function() {
   var imageContainers = document.querySelectorAll('.image-container');
 
@@ -213,20 +213,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     container.addEventListener('mouseenter', function() {
       image1.style.display = 'none';
-      image2.style.display = 'block';
+      image2.style.display = 'inline-block';
     });
 
     container.addEventListener('mouseleave', function() {
-      image1.style.display = 'block';
+      image1.style.display = 'inline-block';
       image2.style.display = 'none';
     });
   });
 
-
-//Filtres de cafés
+  // Filtres de cafés
   // Récupérer les éléments du DOM (pour afficher les filtres au chargement de la page)
-document.addEventListener('DOMContentLoaded', function () {
-// j'effectue tous mes récupérations
+
+  // j'effectue tous mes récupérations
   const filtre_Espresso = document.getElementById('Espresso');
   const filtre_Filtre = document.getElementById('Filtre');
   const filtre_MachineAuto = document.getElementById('MachineAuto');
@@ -240,9 +239,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const filtre_Producteur = document.getElementById('Producteur');
   const filtre_ChocolatEtCorse = document.getElementById('ChocolatEtCorse');
   const filtre_FruiteEtFloral = document.getElementById('FruiteEtFloral');
-  const cards = document.querySelectorAll('.card');
+  const cardElements = document.querySelectorAll('.card');
 
-// Ajouter des  d'événements pour les filtres
+  // Ajouter des événements pour les filtres
   filtre_Espresso.addEventListener('click', toggleFilter);
   filtre_Filtre.addEventListener('click', toggleFilter);
   filtre_MachineAuto.addEventListener('click', toggleFilter);
@@ -257,81 +256,96 @@ document.addEventListener('DOMContentLoaded', function () {
   filtre_ChocolatEtCorse.addEventListener('click', toggleFilter);
   filtre_FruiteEtFloral.addEventListener('click', toggleFilter);
 
-//activer les filtres basé sur l'evenement qui est actif
+  // Activer les filtres basés sur l'événement qui est actif
   function toggleFilter(event) {
     event.target.classList.toggle('active');
     filterCards();
   }
 
-// Fonction de filtrage des éléments
-function filterCards() {
-  const selectedEspresso = filtre_Espresso.classList.contains('active');
-  const selectedFiltre = filtre_Filtre.classList.contains('active');
-  const selectedMachineAuto = filtre_MachineAuto.classList.contains('active');
-  const selectedLavee = filtre_Lavee.classList.contains('active');
-  const selectedNaturelleEtHoney = filtre_NaturelleEtHoney.classList.contains('active');
-  const selectedAnaerobie = filtre_Anaerobie.classList.contains('active');
-  const selectedCooperative = filtre_Cooperative.classList.contains('active');
-  const selectedBio = filtre_Bio.classList.contains('active');
-  const selectedDeca = filtre_Deca.classList.contains('active');
-  const selectedEditionLimitee = filtre_EditionLimitee.classList.contains('active');
-  const selectedProducteur = filtre_Producteur.classList.contains('active');
-  const selectedChocolatEtCorse = filtre_ChocolatEtCorse.classList.contains('active');
-  const selectedFruiteEtFloral = filtre_FruiteEtFloral.classList.contains('active');
+  // Fonction de filtrage des éléments
+  function filterCards() {
+    const selectedEspresso = filtre_Espresso.classList.contains('active');
+    const selectedFiltre = filtre_Filtre.classList.contains('active');
+    const selectedMachineAuto = filtre_MachineAuto.classList.contains('active');
+    const selectedLavee = filtre_Lavee.classList.contains('active');
+    const selectedNaturelleEtHoney = filtre_NaturelleEtHoney.classList.contains('active');
+    const selectedAnaerobie = filtre_Anaerobie.classList.contains('active');
+    const selectedCooperative = filtre_Cooperative.classList.contains('active');
+    const selectedBio = filtre_Bio.classList.contains('active');
+    const selectedDeca = filtre_Deca.classList.contains('active');
+    const selectedEditionLimitee = filtre_EditionLimitee.classList.contains('active');
+    const selectedProducteur = filtre_Producteur.classList.contains('active');
+    const selectedChocolatEtCorse = filtre_ChocolatEtCorse.classList.contains('active');
+    const selectedFruiteEtFloral = filtre_FruiteEtFloral.classList.contains('active');
 
-  // Verifier s'il y a des filtres actifs
-  const anyFiltersSelected =
-                    selectedEspresso ||
-                    selectedFiltre ||
-                    selectedMachineAuto ||
-                    selectedLavee ||
-                    selectedNaturelleEtHoney ||
-                    selectedAnaerobie ||
-                    selectedCooperative ||
-                    selectedBio ||
-                    selectedDeca ||
-                    selectedEditionLimitee ||
-                    selectedProducteur ||
-                    selectedChocolatEtCorse ||
-                    selectedFruiteEtFloral
+    // Vérifier s'il y a des filtres actifs
+    const anyFiltersSelected =
+      selectedEspresso ||
+      selectedFiltre ||
+      selectedMachineAuto ||
+      selectedLavee ||
+      selectedNaturelleEtHoney ||
+      selectedAnaerobie ||
+      selectedCooperative ||
+      selectedBio ||
+      selectedDeca ||
+      selectedEditionLimitee ||
+      selectedProducteur ||
+      selectedChocolatEtCorse ||
+      selectedFruiteEtFloral;
 
-  // Afficher tous les éléments si aucun filtre n'est sélectionné
-  if (!anyFiltersSelected) {
-                    cards.forEach((card) => {
-                        card.style.display = 'block';
-                    });
-                    return;
-                }
-
-  // Parcourir les éléments et les afficher ou les masquer en fonction des filtres
-  cards.forEach((card) => {
-    const productFilter = card.getAttribute('data-productFilter');
-
-    if (
-      (selectedEspresso && /Espresso/.test(productFilter)) ||
-      (selectedFiltre && /Filtre/.test(productFilter)) ||
-      (selectedMachineAuto && /MachineAuto/.test(productFilter)) ||
-      (selectedLavee && /Lavee/.test(productFilter)) ||
-      (selectedNaturelleEtHoney && /NaturelleEtHoney/.test(productFilter)) ||
-      (selectedAnaerobie && /Anaerobie/.test(productFilter)) ||
-      (selectedCooperative && /Cooperative/.test(productFilter)) ||
-      (selectedBio && /Bio/.test(productFilter)) ||
-      (selectedDeca && /Deca/.test(productFilter)) ||
-      (selectedEditionLimitee && /EditionLimitee/.test(productFilter)) ||
-      (selectedProducteur && /Producteur/.test(productFilter)) ||
-      (selectedChocolatEtCorse && /ChocolatEtCorse/.test(productFilter)) ||
-      (selectedFruiteEtFloral && /FruiteEtFloral/.test(productFilter))
-    ) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
+    // Afficher tous les éléments si aucun filtre n'est sélectionné
+    if (!anyFiltersSelected) {
+      cardElements.forEach((card) => {
+        card.style.display = 'inline-block';
+      });
+      return;
     }
+
+    // Parcourir les éléments et les afficher ou les masquer en fonction des filtres
+    cardElements.forEach((card) => {
+      const productFilter = card.getAttribute('data-productFilter');
+
+      if (
+        (selectedEspresso && /Espresso/.test(productFilter)) ||
+        (selectedFiltre && /Filtre/.test(productFilter)) ||
+        (selectedMachineAuto && /MachineAuto/.test(productFilter)) ||
+        (selectedLavee && /Lavee/.test(productFilter)) ||
+        (selectedNaturelleEtHoney && /NaturelleEtHoney/.test(productFilter)) ||
+        (selectedAnaerobie && /Anaerobie/.test(productFilter)) ||
+        (selectedCooperative && /Cooperative/.test(productFilter)) ||
+        (selectedBio && /Bio/.test(productFilter)) ||
+        (selectedDeca && /Deca/.test(productFilter)) ||
+        (selectedEditionLimitee && /EditionLimitee/.test(productFilter)) ||
+        (selectedProducteur && /Producteur/.test(productFilter)) ||
+        (selectedChocolatEtCorse && /ChocolatEtCorse/.test(productFilter)) ||
+        (selectedFruiteEtFloral && /FruiteEtFloral/.test(productFilter))
+      ) {
+        card.style.display = 'inline-block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Afficher tous les éléments au chargement de la page
+  filterCards();
+
+  // Add event listeners to each card element
+  cardElements.forEach((card) => {
+    card.addEventListener('click', () => {
+      // Get the product ID from the card element or any other necessary data
+      const productID = card.getAttribute('data-productID');
+
+      // Redirect to the product page using the product ID
+      window.location.href = 'coffee'+ productID +'.php';
+    });
   });
-}
-// Afficher tous les éléments au chargement de la page
-filterCards();
 });
-});
+
+
+
+
 </script>
 
 </html>

@@ -8,7 +8,7 @@ if(!empty($_POST['userPassword'])){
     return $data;
 
 }
-$userNickname = cleandata($_POST['userNickname']);
+$userEmail = cleandata($_POST['userEmail']);
 }else{
     echo 'probleme';
 }
@@ -25,11 +25,11 @@ $userdata = null;
 
 if(!empty($_POST['userPassword']) 
     && preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@!?*$.+-])[A-Za-z\d@!?*$.+-]{6,20}$/', $_POST['userPassword']) 
-    &&!empty($userNickname)){
+    &&!empty($userEmail)){
     try{
-        require_once './bdd.php';
-        $req = $pdo->prepare('SELECT * FROM useraccounts WHERE tokenconfirmed IS NOT NULL AND userNickname = :userNickname ');
-        $req->bindParam(':userNickname', $userNickname);
+        require_once './connect.php';
+        $req = $pdo->prepare('SELECT * FROM useraccounts WHERE tokenconfirmed IS NOT NULL AND userEmail = :userEmail ');
+        $req->bindParam(':userEmail', $userEmail);
         $req->execute();
         $userdata = $req->fetch(PDO::FETCH_OBJ);
     }catch(PDOException $e){
@@ -39,7 +39,6 @@ if(!empty($_POST['userPassword'])
             session_start();
             $_SESSION['auth'] = $userdata;
             print_r($_SESSION['auth']) ;
-           header('location:../index.php');
         }else{
             echo 'c\'est pas bon du';
             var_dump(password_verify($_POST['userPassword'], $userdata->userPassword));

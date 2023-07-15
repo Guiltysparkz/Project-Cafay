@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cafay-Boutique-header</title>
+  </head>
 <html>
 
 <div class="container">
@@ -80,42 +85,88 @@
    <div class="Searchbar">
     <input type="text" placeholder="Search..">
    </div>
-  </div>
   <div class="Panier"></div>
+  <div class="Connexion">
+    <?php include ('./include/login.php'); ?>
+  </div>
   </div>
 </div>
 
 <style>
     /*Grid layout start*/
-.container {  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "Logo Menus Menus Menus Searchbar-Panier";
-}
-.Logo { grid-area: Logo; }
-.Menus { grid-area: Menus; }
-.Searchbar-Panier { grid-area: Searchbar-Panier; }
-    /*Grid layout end*/
+    .container {
+      display: grid;
+      grid-template-columns: auto repeat(3, 1fr) auto;
+      grid-template-rows: 1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas: "Logo Menus Menus Menus Searchbar-Panier";
+    }
 
-.Logo {
-    display: flex;
-    flex-direction: column;
-}
+    .Logo {
+      grid-area: Logo;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-.Menus {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
+    .Menus {
+      grid-area: Menus;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .Searchbar-Panier {
+      grid-area: Searchbar-Panier;
+    }
+    /* Grid layout end */
+
+    /* Additional styling */
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .Logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .Logo,
+    .Menus,
+    .Searchbar-Panier {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .Searchbar-Panier .Panier {
+      display: flex;
+      height: fit-content;
+      width: fit-content;
+    }
+
+    .Searchbar-Panier .Searchbar {
+      display: flex;
+      height: fit-content;
+      width: fit-content;
+    }
+
+    .Searchbar-Panier .Connexion {
+      display: flex;
+      height: fit-content;
+      width: fit-content;
+    }
 
 .Menus #Menus {
     display: flex;
     flex-direction: row;
-    width: 1000px;
-    height: 100px;
+    width: fit-content;
+    height: fit-content;
 }
 
 .dropdown1 {
