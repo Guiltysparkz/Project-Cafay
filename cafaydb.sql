@@ -33,14 +33,18 @@ CREATE TABLE IF NOT EXISTS `coffee` (
   `productScentProfile` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `productBasePrice` float NOT NULL,
   `productFilter` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `productDescription` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`productID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Product name, category, torrefaction method, washing method, production type (déco, bio, coop...), scent profile.';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Product name, category, torrefaction method, washing method, production type (déco, bio, coop...), scent profile.';
 
--- Dumping data for table cafaydb.coffee: ~3 rows (approximately)
-INSERT INTO `coffee` (`productID`, `productImage`, `productAltImage`, `productName`, `productOrigin`, `productCategoryScore`, `productTorrefactionMethod`, `productWashingMethod`, `productProductionType`, `productScentProfile`, `productBasePrice`, `productFilter`) VALUES
-	(1, 'felipeRestrepo1.jpg', 'felipeRestrepo2.jpg', 'Felipe Restrepo', 'Colombie', '88+', 'Filtre ou Espresso', 'Anaérobie Naturelle', 'Producteur', 'Fruité & Floral', 15.9, 'Filtre Espresso Anaerobie Producteur FruiteEtFloral'),
-	(2, 'jhoanVergara1.jpg', 'jhoanVergara2.jpg', 'Jhoan Vergara', 'Colombie', '88+', 'Filtre', 'Double fermentation, Lavée', 'Producteur', 'Fruité & Floral', 14.9, 'Filtre Lavee Producteur FruiteEtFloral'),
-	(3, 'laRoca1.jpg', 'laRoca2.jpg', 'La Roca', 'Colombie', '87+', 'Filtre', 'Naturelle', 'Producteur', 'Fruité & Floral', 14.9, 'Filtre NaturelleEtHoney Producteur FruiteEtFloral');
+-- Dumping data for table cafaydb.coffee: ~6 rows (approximately)
+INSERT INTO `coffee` (`productID`, `productImage`, `productAltImage`, `productName`, `productOrigin`, `productCategoryScore`, `productTorrefactionMethod`, `productWashingMethod`, `productProductionType`, `productScentProfile`, `productBasePrice`, `productFilter`, `productDescription`) VALUES
+	(1, 'BoaEsperanca.jpg', 'BoaEsperanca2.jpg', 'Boa Esperança', 'Brésil', '82+', 'Filtre ou Espresso ou Machine Auto', 'Naturelle', 'Producteur', 'Chocolaté & Corsé', 7.9, 'Filtre Espresso MachineAuto NaturelleEtHoney Producteur ChocolatEtCorse', 'Un café rond et équilibré, typique de son origine.<br> Il vous donnera d’excellents cafés en machine automatique ainsi qu’en espresso.'),
+	(2, 'jhoanVergara1.jpg', 'jhoanVergara2.jpg', 'Jhoan Vergara', 'Colombie', '88+', 'Filtre', 'Double fermentation, Lavée', 'Producteur', 'Fruité & Floral', 14.9, 'Filtre Lavee Producteur FruiteEtFloral', 'Le producteur Jhoan Vergara nous surprenant à nouveau avec un café parfait pour l\'\'été, aux notes de piña colada et d\'eucalyptus.<br>On vous recommande de le préparer en café glacé et/ou cold brew.'),
+	(3, 'laRoca1.jpg', 'laRoca2.jpg', 'La Roca', 'Colombie', '87+', 'Filtre', 'Naturelle', 'Producteur', 'Fruité & Floral', 14.9, 'Filtre NaturelleEtHoney Producteur FruiteEtFloral', 'Un bourbon rose Colombien aux notes subtiles et élégantes de cassis et d’agrumes, pour une tasse rafraîchissante.'),
+	(4, 'Blend189BIO.jpg', 'Blend189BIO2.jpg', 'Blend 189 [Bio]', 'Brésil & Honduras', '82+', 'Filtre ou Espresso', 'Lavée', 'Cooperative', 'Chocolaté & Corsé', 8.9, 'Filtre Espresso Lavee Cooperative Bio Deca ChocolatEtCorse', NULL),
+	(5, 'DecaElSueno.jpg', 'DecaElSueno2.jpg', 'Déca [El Sueño]', 'Mexique', '80+', 'Filtre ou Espresso', 'Lavée', 'Cooperative', 'Chocolaté & Corsé', 9.9, 'Filtre Espresso Lavee Cooperative ChocolatEtCorse', NULL),
+	(6, 'felipeRestrepo1.jpg', 'felipeRestrepo2.jpg', 'Felipe Restrepo', 'Colombie', '88+', 'Filtre ou Espresso', 'Anaérobie Naturelle', 'Producteur', 'Fruité & Floral', 15.9, 'Filtre Espresso Anaerobie Producteur FruiteEtFloral', NULL);
 
 -- Dumping structure for table cafaydb.equipment
 CREATE TABLE IF NOT EXISTS `equipment` (
@@ -64,6 +68,19 @@ CREATE TABLE IF NOT EXISTS `error_logs` (
 
 -- Dumping data for table cafaydb.error_logs: ~0 rows (approximately)
 
+-- Dumping structure for table cafaydb.panier
+CREATE TABLE IF NOT EXISTS `panier` (
+  `panierID` int NOT NULL AUTO_INCREMENT,
+  `productID` int NOT NULL DEFAULT '0',
+  `productName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'ProductNotFound',
+  `price` float NOT NULL DEFAULT '0',
+  `quantity` int NOT NULL DEFAULT '0',
+  `subtotal` float NOT NULL DEFAULT '0',
+  PRIMARY KEY (`panierID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='id, nom, prix, quantité';
+
+-- Dumping data for table cafaydb.panier: ~0 rows (approximately)
+
 -- Dumping structure for table cafaydb.tea
 CREATE TABLE IF NOT EXISTS `tea` (
   `productID` int NOT NULL AUTO_INCREMENT,
@@ -78,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `tea` (
 -- Dumping structure for table cafaydb.useraccounts
 CREATE TABLE IF NOT EXISTS `useraccounts` (
   `userID` int NOT NULL AUTO_INCREMENT,
-  `userNickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `userNickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `userSurname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `userName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `userEmail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -90,9 +107,12 @@ CREATE TABLE IF NOT EXISTS `useraccounts` (
   `tokenconfirmed` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users nicknames, email address, password, cart, subscription, purchase history.';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users nicknames, email address, password, cart, subscription, purchase history.';
 
--- Dumping data for table cafaydb.useraccounts: ~0 rows (approximately)
+-- Dumping data for table cafaydb.useraccounts: ~2 rows (approximately)
+INSERT INTO `useraccounts` (`userID`, `userNickname`, `userSurname`, `userName`, `userEmail`, `userPassword`, `userCart`, `userSub`, `userHistory`, `conftoken`, `tokenconfirmed`, `created_at`) VALUES
+	(20, 'test', NULL, NULL, 'test@test.com', '$2y$10$62yTspy5.76yeAgJ7cLtJe4Hf1yIY/PYBJzGj0nsxjFcxOkQYfHaK', NULL, NULL, NULL, '0', '2023-07-14 23:16:59', NULL),
+	(21, NULL, NULL, NULL, 'test@test.com', '$2y$10$7fc1AY1z5llLb68kfqdMHudmwolsOJ.MxD1adoQLjw6LHbNFoZqoe', NULL, NULL, NULL, '0', '2023-07-15 02:01:55', NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
