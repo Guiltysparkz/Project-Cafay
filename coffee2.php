@@ -104,7 +104,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
   </div>
       <div class="product-info">
         <h1 class="product-title">Jhoan Vergara Tabi Lave</h1>
-        <p class="product-description">Le producteur Jhoan Vergara nous surprenant à nouveau avec un café parfait pour l’été, aux notes de piña colada et d’eucalyptus. On vous recommande de le préparer en café glacé et/ou cold brew.</p>
+        <p class="product-description">Le producteur Jhoan Vergara nous surprenant à nouveau avec un café parfait pour l''été, aux notes de piña colada et d'eucalyptus. On vous recommande de le préparer en café glacé et/ou cold brew.</p>
   <div class="card" id="card">
   <div class="containerCard">
   <p id="product-price">A partir de <?= $product['productBasePrice'] ?> €</p>

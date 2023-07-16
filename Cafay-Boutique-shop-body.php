@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const productID = card.getAttribute('data-productID');
 
       // Redirect to the product page using the product ID
-      window.location.href = 'coffee'+ productID +'.php';
+      window.location.href = "coffee.php?id="+ productID;
     });
   });
 });
