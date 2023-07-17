@@ -1,5 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php session_start(); ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier</title>
+</head>
+<header>
+    <?= require_once('./Cafay-Boutique-header.php'); ?>
+</header>
+<body>
 <?php
-session_start();
 // Establish database connection
 require('./connect.php');
 
@@ -92,7 +103,8 @@ foreach ($result as $product) {
     <?php
 }
 ?>
-
+</body>
+</html>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const quantityInput = document.querySelector("input[name='quantity']");

@@ -4,7 +4,6 @@
     <title>Cafay-Boutique-header</title>
   </head>
 <html>
-
 <div class="container">
   <div class="Logo">
     <img src="Titre-Cafay-final.png" height=100px width=100px alt="Cafay" srcset="">
@@ -13,7 +12,7 @@
   <div class="Menus">
   <div id="Menus">
    <div class="dropdown1">
-    <a class="active" href="javascript:void(0)"><button class="dropbtn1">Cafés</button></a>
+    <a class="active" href="./Cafay-Boutique-shop.php"><button class="dropbtn1">Cafés</button></a>
      <div class="dropdown-content1">
     <h4>Scores SCA</h4>
      <a href="javascript:void(0)"<a href="#">Les classiques |80+</a></a>
@@ -94,6 +93,22 @@
     <?php include ('./include/login.php'); ?>
   </div>
   </div>
+  <?php
+    // Check if the user has already made a decision
+    $accepted = isset($_COOKIE['privacy_accepted']);
+  
+    // If the user has not made a decision
+    if (!$accepted) {
+      echo '
+        <div id="privacyPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffffff; padding: 20px; border: 1px solid #000000; z-index: 4;">
+          <h2>Privacy Notice</h2>
+          <p>This website uses cookies to enhance your experience. By continuing to use this site, you consent to the use of cookies in accordance with our <a href="privacy_policy.php">Privacy Policy</a>.</p>
+          <button onclick="acceptPrivacy()">Accept</button>
+          <button onclick="refusePrivacy()">Refuse</button>
+        </div>
+      ';
+    }
+  ?>
 </div>
 
 <style>
@@ -434,20 +449,47 @@
 </style>
 
 <script>
-window.onscroll = function() {myFunction()};
+    <?php
+      // If the user has not made a decision
+      if (!$accepted) {
+        echo '
+          window.onload = function() {
+            var popup = document.getElementById("privacyPopup");
+            popup.style.display = "block";
+          };
 
-var Menus = document.getElementById("Menus");
-var sticky = Menus.offsetTop;
+          function acceptPrivacy() {
+            // Set the cookie to indicate the user has accepted
+            document.cookie = "privacy_accepted=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+            
+            // Close the pop-up
+            var popup = document.getElementById("privacyPopup");
+            popup.style.display = "none";
+          }
 
+          function refusePrivacy() {
+            // Redirect the user to the legal details page
+            window.location.href = "legal_details.php";
+          }
+        ';
+      }
+    ?>
 
+    window.onscroll = function() {
+      myFunction();
+    };
 
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    Menus.classList.add("sticky")
-  } else {
-    Menus.classList.remove("sticky");
-  }
-}
-</script>
+    var Menus = document.getElementById("Menus");
+    var sticky = Menus.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        Menus.classList.add("sticky");
+      } else {
+        Menus.classList.remove("sticky");
+      }
+    }
+  </script>
+
 
 </html>
