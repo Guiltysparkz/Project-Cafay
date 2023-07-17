@@ -83,7 +83,11 @@
 </div>
   <div class="Searchbar-Panier">
    <div class="Searchbar">
-    <input type="text" placeholder="Search..">
+   <form action="searchresult.php" method="GET">
+  <input type="text" name="query" placeholder="Search for products">
+  <button type="submit">Search</button>
+</form>
+
    </div>
   <div class="Panier"></div>
   <div class="Connexion">
@@ -115,6 +119,7 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      z-index: 2;
     }
 
     .Searchbar-Panier {

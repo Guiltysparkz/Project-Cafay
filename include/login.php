@@ -62,7 +62,7 @@ span.userPassword {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 2; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -143,7 +143,7 @@ span.userPassword {
 
 <div id="connexion" class="modal">
   
-  <form class="modal-content animate" action="" method="post">
+  <form class="modal-content animate" action="./include/loginProcessing.php" method="post">
     <div class="imgFormContainer">
       <span onclick="document.getElementById('connexion').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="./Titre-Cafay-final.png" alt="Avatar" class="avatar">
@@ -154,14 +154,14 @@ span.userPassword {
       <input type="email" placeholder="Enter User email" name="userEmail" id="userEmail" required pattern="^[A-Za-z0-9'.-]+@{1}[A-Za-z]+\.{1}[A-Za-z0-9'.-]{2,}$">
 
       <label for="userPassword"><b>Mot de passe</b></label>
-      <input type="password" placeholder="Enter Password" name="userPassword" id="userPassword" required pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@!?*$.+-])[A-Za-z\d@!?*$.+-]{6,20}$/">
+      <input type="password" placeholder="Enter Password" name="userPassword" id="userPassword" required pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@!?*$.+-])[A-Za-z\d@!?*$.+-]{6,20}$">
         
       <button type="submit" id="buttonlogin">Se connecter</button>
     </div>
 
     <div class="formContainer" style="background-color:#f1f1f1">
       <button type="button" id="buttonlogin" onclick="document.getElementById('connexion').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="userPassword">Mot de passe <a href="#">oublié?</a></span>
+      <span class="userPassword"><a href="./include/inscription.php">S'inscrire</a></span>
     
     </div>
   </form>
